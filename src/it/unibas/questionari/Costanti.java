@@ -17,5 +17,9 @@ public class Costanti {
     
     public static final String ARCHIVIO = "ARCHIVIO";
     public static String LISTA_QUESTIONARI = "LISTA_QUESTIONARI";
+    
+    public static final String TEMA_LIGHT = "light";
+    public static final String TEMA_DARK = "dark";
+    public static final String TEMA = "tema";
 
 }

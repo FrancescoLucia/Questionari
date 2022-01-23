@@ -11,6 +11,8 @@ import it.unibas.questionari.persistenza.DAOException;
 import it.unibas.questionari.persistenza.IDAOArchivio;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import static javax.swing.Action.ACCELERATOR_KEY;
@@ -18,6 +20,7 @@ import static javax.swing.Action.MNEMONIC_KEY;
 import static javax.swing.Action.NAME;
 import static javax.swing.Action.SHORT_DESCRIPTION;
 import javax.swing.KeyStroke;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -28,6 +31,7 @@ public class ControlloMenu {
     private Action azioneCarica = new AzioneCarica();
     private Action azioneVerificaCompilazioni = new AzioneVerificaCompilazioni();
     private Action azioneEsci = new AzioneEsci();
+    private Action azioneCambiaTema = new AzioneCambiaTema();
 
     class AzioneCarica extends AbstractAction {
 
@@ -47,7 +51,7 @@ public class ControlloMenu {
                 Applicazione.getInstance().getControlloPrincipale().getAzioneVerificaQuestionario().setEnabled(true);
                 Applicazione.getInstance().getControlloPrincipale().getAzioneCerca().setEnabled(true);
                 getAzioneVerificaCompilazioni().setEnabled(true);
-                
+
                 String messaggio = "Sono stati caricati " + archivio.getListaQuestionari().size() + " questionari";
                 Applicazione.getInstance().getFrame().mostraMessaggio(messaggio);
             } catch (DAOException ex) {
@@ -86,7 +90,7 @@ public class ControlloMenu {
 
         @Override
         public void actionPerformed(ActionEvent ae) {
-            Archivio archivio = (Archivio)Applicazione.getInstance().getModello().getBean(Costanti.ARCHIVIO);
+            Archivio archivio = (Archivio) Applicazione.getInstance().getModello().getBean(Costanti.ARCHIVIO);
             boolean risultato = archivio.verificaCompilazioni();
             String messaggio;
             if (risultato) {
@@ -95,6 +99,33 @@ public class ControlloMenu {
                 messaggio = "ATTENZIONE: L'archivio contiene compilazioni duplicate";
             }
             Applicazione.getInstance().getFrame().mostraMessaggio(messaggio);
+        }
+
+    }
+
+    class AzioneCambiaTema extends AbstractAction {
+
+        public AzioneCambiaTema() {
+            this.putValue(NAME, "Cambia tema");
+            this.putValue(SHORT_DESCRIPTION, "Cambia il tema tra dark e light");
+            this.putValue(MNEMONIC_KEY, KeyEvent.VK_T);
+            this.putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("ctrl alt t"));
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            String tema = (String) Applicazione.getInstance().getModello().getBean(Costanti.TEMA);
+            if (tema.equals(Costanti.TEMA_DARK)) {
+                Applicazione.getInstance().getModello().putBean(Costanti.TEMA, Costanti.TEMA_LIGHT);
+            } else {
+                Applicazione.getInstance().getModello().putBean(Costanti.TEMA, Costanti.TEMA_DARK);
+            }
+            //Applicazione.getInstance().getModello().putBean(Costanti.TEMA, tema.equals(Costanti.TEMA_DARK) ? Costanti.TEMA_LIGHT : Costanti.TEMA_DARK);
+            try {
+                Applicazione.getInstance().getFrame().aggiornaTema();
+            } catch (UnsupportedLookAndFeelException ex) {
+                Logger.getLogger(ControlloMenu.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
     }
@@ -109,6 +140,10 @@ public class ControlloMenu {
 
     public Action getAzioneEsci() {
         return azioneEsci;
+    }
+
+    public Action getAzioneCambiaTema() {
+        return azioneCambiaTema;
     }
 
 }

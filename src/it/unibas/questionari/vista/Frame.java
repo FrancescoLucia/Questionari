@@ -4,13 +4,16 @@
  */
 package it.unibas.questionari.vista;
 
+import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import it.unibas.questionari.Applicazione;
+import it.unibas.questionari.Costanti;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -26,6 +29,21 @@ public class Frame extends javax.swing.JFrame {
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        Applicazione.getInstance().getModello().putBean(Costanti.TEMA, Costanti.TEMA_LIGHT);
+    }
+
+    public void aggiornaTema() throws UnsupportedLookAndFeelException {
+        String tema = (String) Applicazione.getInstance().getModello().getBean(Costanti.TEMA);
+//        if (tema.equals(Costanti.TEMA_LIGHT)) {
+//            UIManager.setLookAndFeel(new FlatLightLaf());
+//        } else {
+//            UIManager.setLookAndFeel(new FlatDarkLaf());
+//        }
+        
+        UIManager.setLookAndFeel(tema.equals(Costanti.TEMA_LIGHT) ? new FlatLightLaf() : new FlatDarkLaf());
+        SwingUtilities.updateComponentTreeUI(this);
+        this.pack();
     }
 
     /**
@@ -48,6 +66,7 @@ public class Frame extends javax.swing.JFrame {
         menuCarica.setAction(Applicazione.getInstance().getControlloMenu().getAzioneCarica());
         menuEsci.setAction(Applicazione.getInstance().getControlloMenu().getAzioneEsci());
         menuVerifica.setAction(Applicazione.getInstance().getControlloMenu().getAzioneVerificaCompilazioni());
+        menuCambiaTema.setAction(Applicazione.getInstance().getControlloMenu().getAzioneCambiaTema());
     }
 
     /**
@@ -60,12 +79,17 @@ public class Frame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         javax.swing.JMenuBar jMenuBar1 = new javax.swing.JMenuBar();
         javax.swing.JMenu jMenu1 = new javax.swing.JMenu();
         menuCarica = new javax.swing.JMenuItem();
         menuVerifica = new javax.swing.JMenuItem();
         javax.swing.JPopupMenu.Separator jSeparator1 = new javax.swing.JPopupMenu.Separator();
         menuEsci = new javax.swing.JMenuItem();
+        javax.swing.JMenu jMenu2 = new javax.swing.JMenu();
+        menuCambiaTema = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Questionari");
@@ -84,6 +108,13 @@ public class Frame extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setText("Modifica");
+
+        menuCambiaTema.setText("Cambia tema");
+        jMenu2.add(menuCambiaTema);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -101,7 +132,9 @@ public class Frame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JMenuItem menuCambiaTema;
     private javax.swing.JMenuItem menuCarica;
     private javax.swing.JMenuItem menuEsci;
     private javax.swing.JMenuItem menuVerifica;
