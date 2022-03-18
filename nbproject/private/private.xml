@@ -3,18 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/francesco/Scrivania/UNI/POO1/esercitazioni/Questionari/src/it/unibas/questionari/vista/VistaPrincipale.java</file>
-            <file>file:/home/francesco/Scrivania/UNI/POO1/esercitazioni/Questionari/src/it/unibas/questionari/Costanti.java</file>
+            <file>file:/home/francesco/Scrivania/UNI/POO1/esercitazioni/Questionari/src/it/unibas/questionari/modello/Archivio.java</file>
             <file>file:/home/francesco/Scrivania/UNI/POO1/esercitazioni/Questionari/src/it/unibas/questionari/modello/Questionario.java</file>
             <file>file:/home/francesco/Scrivania/UNI/POO1/esercitazioni/Questionari/src/it/unibas/questionari/modello/Compilazione.java</file>
+            <file>file:/home/francesco/Scrivania/UNI/POO1/esercitazioni/Questionari/src/it/unibas/questionari/Costanti.java</file>
             <file>file:/home/francesco/Scrivania/UNI/POO1/esercitazioni/Questionari/src/it/unibas/questionari/persistenza/DAOArchivioMock.java</file>
             <file>file:/home/francesco/Scrivania/UNI/POO1/esercitazioni/Questionari/src/it/unibas/questionari/controllo/ControlloMenu.java</file>
-            <file>file:/home/francesco/Scrivania/UNI/POO1/esercitazioni/Questionari/src/it/unibas/questionari/Applicazione.java</file>
-            <file>file:/home/francesco/Scrivania/UNI/POO1/esercitazioni/Questionari/src/it/unibas/questionari/vista/Frame.java</file>
-            <file>file:/home/francesco/Scrivania/UNI/POO1/esercitazioni/Questionari/src/it/unibas/questionari/modello/Modello.java</file>
+            <file>file:/home/francesco/Scrivania/UNI/POO1/esercitazioni/Questionari/src/logback.xml</file>
+            <file>file:/home/francesco/Scrivania/UNI/POO1/esercitazioni/Questionari/test/it/unibas/questionari/test/QuestionarioTest.java</file>
             <file>file:/home/francesco/Scrivania/UNI/POO1/esercitazioni/Questionari/src/it/unibas/questionari/controllo/ControlloPrincipale.java</file>
-            <file>file:/home/francesco/Scrivania/UNI/POO1/esercitazioni/Questionari/src/it/unibas/questionari/modello/Archivio.java</file>
             <file>file:/home/francesco/Scrivania/UNI/POO1/esercitazioni/Questionari/src/it/unibas/questionari/vista/ModelloTabellaQuestionari.java</file>
+            <file>file:/home/francesco/Scrivania/UNI/POO1/esercitazioni/Questionari/src/it/unibas/questionari/vista/VistaPrincipale.java</file>
         </group>
     </open-files>
 </project-private>

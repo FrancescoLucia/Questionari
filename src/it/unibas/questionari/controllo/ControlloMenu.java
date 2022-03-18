@@ -11,8 +11,6 @@ import it.unibas.questionari.persistenza.DAOException;
 import it.unibas.questionari.persistenza.IDAOArchivio;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import static javax.swing.Action.ACCELERATOR_KEY;
@@ -21,12 +19,16 @@ import static javax.swing.Action.NAME;
 import static javax.swing.Action.SHORT_DESCRIPTION;
 import javax.swing.KeyStroke;
 import javax.swing.UnsupportedLookAndFeelException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author francesco
  */
 public class ControlloMenu {
+    
+    private final static Logger logger = LoggerFactory.getLogger(ControlloMenu.class);
 
     private Action azioneCarica = new AzioneCarica();
     private Action azioneVerificaCompilazioni = new AzioneVerificaCompilazioni();
@@ -55,6 +57,7 @@ public class ControlloMenu {
                 String messaggio = "Sono stati caricati " + archivio.getListaQuestionari().size() + " questionari";
                 Applicazione.getInstance().getFrame().mostraMessaggio(messaggio);
             } catch (DAOException ex) {
+                logger.error("ERRORE nel caricare i dati");
                 Applicazione.getInstance().getFrame().mostraMessaggioErrore("Errore durante il caricamento dei dati");
             }
         }
@@ -124,7 +127,7 @@ public class ControlloMenu {
             try {
                 Applicazione.getInstance().getFrame().aggiornaTema();
             } catch (UnsupportedLookAndFeelException ex) {
-                Logger.getLogger(ControlloMenu.class.getName()).log(Level.SEVERE, null, ex);
+                logger.warn("Look and feel non supportato");
             }
         }
 

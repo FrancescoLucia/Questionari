@@ -36,7 +36,7 @@ public class ControlloPrincipale {
             this.putValue(SHORT_DESCRIPTION, "Cerca questionari");
             this.putValue(MNEMONIC_KEY, KeyEvent.VK_E);
             this.putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("ctrl alt e"));
-            
+
             this.setEnabled(false);
         }
 
@@ -45,18 +45,18 @@ public class ControlloPrincipale {
             VistaPrincipale vistaPrincipale = Applicazione.getInstance().getVistaPrincipale();
             String argomento = vistaPrincipale.getCampoArgomento();
             int difficolta = vistaPrincipale.getCampoDifficolta();
-            
+
             if (argomento.isEmpty()) {
                 Applicazione.getInstance().getFrame().mostraMessaggioErrore("Seleziona un argomento");
                 return;
             }
-            
+
             if (difficolta == 0) {
                 Applicazione.getInstance().getFrame().mostraMessaggioErrore("Seleziona una difficolta'");
                 return;
             }
-            
-            Archivio  archivio = (Archivio) Applicazione.getInstance().getModello().getBean(Costanti.ARCHIVIO);
+
+            Archivio archivio = (Archivio) Applicazione.getInstance().getModello().getBean(Costanti.ARCHIVIO);
             List<Questionario> listaQuestionari = archivio.cercaQuestionari(argomento, difficolta);
             Applicazione.getInstance().getModello().putBean(Costanti.LISTA_QUESTIONARI, listaQuestionari);
             vistaPrincipale.aggiornaDati();
@@ -71,7 +71,7 @@ public class ControlloPrincipale {
             this.putValue(SHORT_DESCRIPTION, "Verifica se i risultati sono in ordine crescente per il questionario selezionato");
             this.putValue(MNEMONIC_KEY, KeyEvent.VK_V);
             this.putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("ctrl alt v"));
-            
+
             this.setEnabled(false);
         }
 

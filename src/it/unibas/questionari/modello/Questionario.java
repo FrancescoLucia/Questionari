@@ -56,7 +56,9 @@ public class Questionario implements Comparable<Questionario> {
     }
 
     public boolean verificaOrdineCompilazioni() {
-
+        if (this.listaCompilazioni.isEmpty()) {
+            throw new IllegalArgumentException("Nessuna compilazione inserita");
+        }
         for (int i = 0; i < this.listaCompilazioni.size() - 1; i++) {
             if (listaCompilazioni.get(i).getTempoCompilazione() > listaCompilazioni.get(i + 1).getTempoCompilazione()) {
                 return false;

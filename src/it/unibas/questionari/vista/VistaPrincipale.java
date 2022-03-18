@@ -21,6 +21,7 @@ public class VistaPrincipale extends javax.swing.JPanel {
         initComponents();
         impostaAzioni();
         inizializzaCampi();
+        
     }
 
     private void impostaAzioni() {
