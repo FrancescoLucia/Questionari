@@ -121,6 +121,8 @@ public class VistaPrincipale extends javax.swing.JPanel {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
+        tabellaQuestionari.setFont(new java.awt.Font("Fira Sans", 0, 14)); // NOI18N
+        tabellaQuestionari.setForeground(new java.awt.Color(51, 51, 255));
         tabellaQuestionari.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

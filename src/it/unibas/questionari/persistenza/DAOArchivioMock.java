@@ -8,15 +8,20 @@ import it.unibas.questionari.Costanti;
 import it.unibas.questionari.modello.Archivio;
 import it.unibas.questionari.modello.Compilazione;
 import it.unibas.questionari.modello.Questionario;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author francesco
  */
 public class DAOArchivioMock implements IDAOArchivio {
+    
+    public final static Logger logger = LoggerFactory.getLogger(DAOArchivioMock.class);
 
     @Override
     public Archivio carica(String nomeFile) throws DAOException {
+        logger.debug("Caricamento archivio");
         Archivio archivio = new Archivio();
 
         Questionario q1 = new Questionario("codice1", "Questionario n.1", 3, Costanti.ITALIANO);
@@ -62,6 +67,8 @@ public class DAOArchivioMock implements IDAOArchivio {
         archivio.addQuestionario(q4);
         archivio.addQuestionario(q5);
         archivio.addQuestionario(q6);
+        
+        logger.info("Caricati " + archivio.getListaQuestionari().size() + " questionari");
 
         return archivio;
     }

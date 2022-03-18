@@ -5,7 +5,6 @@
 package it.unibas.questionari.vista;
 
 import com.formdev.flatlaf.FlatDarkLaf;
-import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import it.unibas.questionari.Applicazione;
 import it.unibas.questionari.Costanti;
@@ -24,6 +23,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class Frame extends javax.swing.JFrame {
 
     static {
+        setDefaultLookAndFeelDecorated(true);
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (UnsupportedLookAndFeelException ex) {
@@ -40,7 +40,7 @@ public class Frame extends javax.swing.JFrame {
 //        } else {
 //            UIManager.setLookAndFeel(new FlatDarkLaf());
 //        }
-        
+
         UIManager.setLookAndFeel(tema.equals(Costanti.TEMA_LIGHT) ? new FlatLightLaf() : new FlatDarkLaf());
         SwingUtilities.updateComponentTreeUI(this);
         this.pack();
